@@ -1,0 +1,99 @@
+/*
+Undirected graph symbolizes CS315 course. Vertices represent students and instructor. Edges represent relationships.
+*/
+
+ungraph CS315{
+	vertex x, y, z, k;
+	x--y--z;
+	y--k, x--k, z--k;
+	edge1 = x--y;
+	edge2 = y--z;
+	edge3 = z--k;
+	edge4 = x--k;
+	edge5 = y--k;
+
+	vertex x{
+		"name" = "Kemal";
+		"surname" = "Buyukkaya";
+		"type" = "Student";
+	}
+
+	y."name" = "Berk";
+	y."surname" = "Yurttas";
+	y."type" = "Student";
+
+	z."name" = "Ilteris";
+	z."surname" = "Tabak";
+	z."type" = "Student";
+
+	k."name" = "Bugra";
+	k."surname" = "Gedik";
+	k."type" = "Instructor";
+
+	(x--y).“relationship” = “project group”;
+
+	edge edge2 {
+		“relationship” = “project group”;
+	}
+	edge edge3 {
+		"relationship" = "instructor student";
+	}
+	edge edge4 {
+		"relationship" = "instructor student";
+	}
+	edge5."relationship" = "instructor student";
+
+	x."grades" = {“CS102”:[80, 90], “CS101”:[50, 60]};
+	y."grades" = {“CS102”:[63, 55], “CS101”:[35, 40]};
+	z."grades" = {“CS102”:[43, 05], “CS101”:[28, 64]};
+}
+
+/*
+Directed graph represent the relationship between cities of Turkey. Vertices represent cities. Edges represent highways between cities.
+*/
+digraph Turkey{
+	vertex e, a, k;
+	e<->a<->k
+	edge1 = e<->a;
+	edge2 = a<->k;
+
+	vertex e{
+		e."name" = "Eskisehir";
+		e."plateNo" = 26;
+	}
+	vertex a{
+		a."name" = "Ankara";
+		a."plateNo" = 06;
+	}
+	k."name" = "Konya";
+	k."plateNo" = 42;
+
+	edge edge1{
+		"name" = "D-200";
+		"distance" = 234;
+	}
+	edge2."name" = "D-715";
+	edge2."distance" = 262;
+}
+//Queries
+query1 = [“name” == “Kemal”];
+query2 = <“relationship” == “project group”>;
+query3 = [“name” == “Berk”];
+query4 = query1 query2 query3;
+CS315 ? query4;
+CS315 ? query1 (query2 query3)*;
+query5 = query1 <commonValue = “relationship”> query3 (<“relationship” == commonValue> [“name” == “Bugra”])+;
+CS315 ? query5;
+query6 = [true] (<“relationship” == “project group”> [true])*;
+CS315 ? query6;
+
+query7 = [“name” == “Eskisehir”];
+query8 = <“name” == “D-200”>;
+query9 = [“name” == “Ankara”];
+query10 = query7 query8 query9;
+Turkey ? query10;
+Turkey ? query7 (query8 query9)*;
+query11 = query7 <commonValue = “name”> query9 (<“name” == commonValue> [“name” == “Eskisehir”])+;
+Turkey ? query11;
+query12 = [true] (<“name” == “D-200”> [true])*;
+Turkey ? query12;
