@@ -48,11 +48,69 @@ DIRECTEDGRAPH digraph
 UNDIRECTEDGRAPH ungraph
 VERTEX vertex
 EDGE edge
+ABSOLUTE absolute
+POWER power
+SQRT sqrt
+GETCHAR getChar
+RANDOMINT randomInt
+RANDOMFLOAT randomFloat
+LENGTH length
 QUESTION \?
 AND &&
 OR \|\|
+ALTERNATION \|
+EQUAL ==
 
-// TODO 
+
+%%
+{DIRECTEDGRAPH} return DIRECTEDGRAPH;
+{UNDIRECTEDGRAPH} return UNDIRECTEDGRAPH;
+{VERTEX} return VERTEX;
+{EDGE} return EDGE;
+{LINE} return LINE;
+{LEFTARROW} return LEFTARROW;
+{RIGHTARROW} return RIGHTARROW;
+{DOUBLEARROW} return DOUBLEARROW;
+{QUESTION} return QUESTION;
+{AND} return AND;
+{OR} return OR;
+{DOT} return DOT;
+{SPACE} ;
+{COMMENT} ;
+{COMMA} return COMMA;
+{NEWLINE} ;
+{ENDSTMT} return ENDSTMT;
+{ASSIGN} return ASSIGN;
+{NOT} return NOT;
+{LTE} return LTE;
+{GTE} return GTE;
+{LT} return LT;
+{GT} return GT;
+{POW} return POW;
+{LBRACE} return LBRACE;
+{RBRACE} return RBRACE;
+{PLUS} return PLUS;
+{MINUS} return MINUS;
+{MUL} return STAR;
+{DIV} return DIV;
+{LPARAM} return LPARAM;
+{RPARAM} return RPARAM;
+{LBRACKET} return LBRACKET;
+{RBRACKET} return RBRACKET;
+{STRING} return STRING;
+{BOOL} return BOOL;
+{INT} return INT;
+{FLOAT} return FLOAT;
+{ID} return ID;
+{ALTERNATION} return ALTERNATION;
+{EQUAL} return EQUAL;
+{ABSOLUTE} return ABSOLUTE;
+{POWER} return POWER;
+{SQRT} return SQRT;
+{GETCHAR} return GETCHAR;
+{RANDOMINT} return RANDOMINT;
+{RANDOMFLOAT} return RANDOMFLOAT;
+{LENGTH} return LENGTH;
 
 int yywrap()
 {
