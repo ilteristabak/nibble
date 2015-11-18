@@ -1,10 +1,6 @@
 %{
-#include<iostream>
-#include "y.tab.h"
-using namespace std;
-int yyparse();
+#include <stdlib.h>
 %}
-%option yylineno
 
 SPACE [ \t]+
 ASSIGN =
@@ -23,6 +19,7 @@ GT >
 LTE <=
 GTE >=
 NOT !
+APOST '
 POW \^
 LPARAM \(
 RPARAM \)
@@ -48,13 +45,6 @@ DIRECTEDGRAPH digraph
 UNDIRECTEDGRAPH ungraph
 VERTEX vertex
 EDGE edge
-ABSOLUTE absolute
-POWER power
-SQRT sqrt
-GETCHAR getChar
-RANDOMINT randomInt
-RANDOMFLOAT randomFloat
-LENGTH length
 QUESTION \?
 AND &&
 OR \|\|
@@ -63,56 +53,61 @@ EQUAL ==
 
 
 %%
-{DIRECTEDGRAPH} return DIRECTEDGRAPH;
-{UNDIRECTEDGRAPH} return UNDIRECTEDGRAPH;
-{VERTEX} return VERTEX;
-{EDGE} return EDGE;
-{LINE} return LINE;
-{LEFTARROW} return LEFTARROW;
-{RIGHTARROW} return RIGHTARROW;
-{DOUBLEARROW} return DOUBLEARROW;
-{QUESTION} return QUESTION;
-{AND} return AND;
-{OR} return OR;
-{DOT} return DOT;
+{DIRECTEDGRAPH} printf(" DIRECTEDGRAPH ");
+{UNDIRECTEDGRAPH} printf("UNDIRECTEDGRAPH ");
+{VERTEX} printf("VERTEX ");
+{EDGE} printf("EDGE ");
+{LINE} printf("LINE ");
+{LEFTARROW} printf("LEFTARROW ");
+{RIGHTARROW} printf("RIGHTARROW ");
+{DOUBLEARROW} printf("DOUBLEARROW ");
+{QUESTION} printf("QUESTION ");
+{AND} printf("AND ");
+{OR} printf("OR ");
+{DOT} printf("DOT ");
 {SPACE} ;
 {COMMENT} ;
-{COMMA} return COMMA;
+{COMMA} printf("COMMA ");
+{APOST} printf("APOST ");
 {NEWLINE} ;
-{ENDSTMT} return ENDSTMT;
-{ASSIGN} return ASSIGN;
-{NOT} return NOT;
-{LTE} return LTE;
-{GTE} return GTE;
-{LT} return LT;
-{GT} return GT;
-{POW} return POW;
-{LBRACE} return LBRACE;
-{RBRACE} return RBRACE;
-{PLUS} return PLUS;
-{MINUS} return MINUS;
-{MUL} return STAR;
-{DIV} return DIV;
-{LPARAM} return LPARAM;
-{RPARAM} return RPARAM;
-{LBRACKET} return LBRACKET;
-{RBRACKET} return RBRACKET;
-{STRING} return STRING;
-{BOOL} return BOOL;
-{INT} return INT;
-{FLOAT} return FLOAT;
-{ID} return ID;
-{ALTERNATION} return ALTERNATION;
-{EQUAL} return EQUAL;
-{ABSOLUTE} return ABSOLUTE;
-{POWER} return POWER;
-{SQRT} return SQRT;
-{GETCHAR} return GETCHAR;
-{RANDOMINT} return RANDOMINT;
-{RANDOMFLOAT} return RANDOMFLOAT;
-{LENGTH} return LENGTH;
+{ENDSTMT} printf("ENDSTMT ");
+{ASSIGN} printf("ASSIGN ");
+{NOT} printf("NOT ");
+{LTE} printf("LTE ");
+{GTE} printf("GTE ");
+{LT} printf("LT ");
+{GT} printf("GT ");
+{POW} printf("POW ");
+{LBRACE} printf("LBRACE ");
+{RBRACE} printf("RBRACE ");
+{PLUS} printf("PLUS ");
+{MINUS} printf("MINUS ");
+{MUL} printf("MUL ");
+{DIV} printf("DIV ");
+{LPARAM} printf("LPARAM ");
+{RPARAM} printf("RPARAM ");
+{LBRACKET} printf("LBRACKET ");
+{RBRACKET} printf("RBRACKET ");
+{STRING} printf("STRING(%s)",yytext);
+{BOOL} printf("BOOL(%s) ",yytext);
+{INT} printf("INT(%s) ",yytext);
+{FLOAT} printf("FLOAT(%s) ",yytext);
+{ID} printf("ID(%s) ",yytext);
+{ALTERNATION} printf("ALTERNATION ");
+{EQUAL} printf("EQUAL ");
 
+
+
+
+%%
 int yywrap()
 {
 	return 1;
+}
+int main()
+{
+/*
+*/
+	yylex();
+	return 0;
 }
