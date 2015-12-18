@@ -1,0 +1,11 @@
+//Error! Query operator is missing. There should be "?" instead of "!".
+courses ! ["name" == "CS"] <"minGrade" >= 50>;
+//Error! There should be either boolean expression or assignment between [ and ] or < and >
+roads ? <> ["city" == "Ankara"];
+// error! number cannot be processed as a property since there is no “” around.
+Courses ? <"Code" == 102> [number > 80];
+// Error! You have to specify graph name to query
+?  ["color"== "white"] <true> ["kind" == "rose"];
+// Error! <“noOfStudents" + 3 > is not a boolean expression or assignment
+// that is wrong usage of arithmetic operation
+schools ? ["name"== "Bilkent"]  <"noOfStudents" + 3 > ["name" == "Ege"];

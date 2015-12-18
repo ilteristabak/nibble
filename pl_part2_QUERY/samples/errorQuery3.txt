@@ -1,0 +1,2 @@
+// error! number cannot be processed as a property since there is no рс around.
+Courses ? <"Code" == 102> [number > 80];

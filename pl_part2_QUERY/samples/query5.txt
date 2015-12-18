@@ -1,0 +1,10 @@
+query7 = ["name" == "Eskisehir"];
+query8 = <"name" == "D-200">;
+query9 = ["name" == "Ankara"];
+query10 = query7 query8 query9;
+Turkey ? query10;
+Turkey ? query7 (query8 query9)*;
+query11 = query7 <commonValue = "name"> query9 (<"name" == commonValue> ["name" == "Eskisehir"])*;
+Turkey ? query11;
+query12 = [true] (<"name" == "D-200"> [true])*;
+Turkey ? query12;

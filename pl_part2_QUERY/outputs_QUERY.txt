@@ -1,0 +1,119 @@
+Outputs of Sample Programs
+----------------------------------------------------------------------------------------------------------
+	query1.txt
+	
+	Input:
+	query1 = [ "name" == "cs" ] < "dimension" == 3 > [ "color" == "blue"];
+	query2 = [ "city" == "ankara" ] <true> ["city" == "izmir"];
+	graph1 ? query1 | query2;
+	
+	Output:
+	Successfully parsed
+----------------------------------------------------------------------------------------------------------
+	
+	query2.txt
+	
+	Input:
+	query10 = < "type" == "real" >;
+	query11 = < "type" == "virtual" >;
+	query12 = query10 (query10 | query11)*; 
+	// same with query12 = < "type" == "real" > [true] < "type" == "virtual" >;
+	query4 ? query12;
+	
+	Output:
+	Successfully parsed
+----------------------------------------------------------------------------------------------------------
+	
+	query3.txt
+	
+	Input:
+	x = 3;
+	y = 4;
+	graph3 ?  ["no" > x + y] < "name" == "A" > [ sqrt("client") < y];
+	
+	Output:
+	Successfully parsed
+----------------------------------------------------------------------------------------------------------
+	
+	query4.txt
+
+	Input:
+	graph3 ? [commonName = "name"] <"dim" == 8> ["name" == commonName];
+
+	Output:
+	Successfully parsed
+----------------------------------------------------------------------------------------------------------
+	
+	query5.txt
+	
+	Input:
+	query7 = ["name" == "Eskisehir"];
+	query8 = <"name" == "D-200">;
+	query9 = ["name" == "Ankara"];
+	query10 = query7 query8 query9;
+	Turkey ? query10;
+	Turkey ? query7 (query8 query9)*;
+	query11 = query7 <commonValue = "name"> query9 (<"name" == commonValue> ["name" == "Eskisehir"])*;
+	Turkey ? query11;
+	query12 = [true] (<"name" == "D-200"> [true])*;
+	Turkey ? query12;
+
+	Output:
+	Successfully parsed
+
+__________________________________________________________________________________________________________
+
+	errorQuery1.txt
+
+	input:
+	//Error! Query operator is missing. There should be "?" instead of "!".
+	courses ! ["name" == "CS"] <"minGrade" >= 50>;
+	
+	Output:
+	error at line 2: Use ? to execute a query expression
+	Parsing completed with 1 errors
+----------------------------------------------------------------------------------------------------------
+
+	errorQuery2.txt
+
+	input:
+	//Error! There should be either boolean expression or assignment between [ and ] or < and >
+	roads ? <> ["city" == "Ankara"];
+	
+	Output:
+	error: Required a boolean expression or assignment at line 2
+	Parsing completed with 1 errors
+----------------------------------------------------------------------------------------------------------
+	
+	errorQuery3.txt
+
+	input:
+	// error! number cannot be processed as a property since there is no “” around.
+	courses ? <“code" == 102> [number > 80];
+	
+	Output:
+	error: Property names should be in " " at line 2
+	Parsing completed with 1 errors
+----------------------------------------------------------------------------------------------------------
+
+	errorQuery4.txt
+
+	input:
+	// Error! You have to specify graph name to query
+	?  ["color"== "white"] <true> ["kind" == "rose"];
+	
+	Output:
+	error: Required a graph name before ? at line 2
+	Parsing completed with 1 errors
+----------------------------------------------------------------------------------------------------------
+
+	errorQuery5.txt
+
+	input:
+	// Error! <“noOfStudents" + 3 > is not a boolean expression or assignment
+	// That is a wrong usage of arithmetic operation
+	schools ? ["name"== "Bilkent"]  <"noOfStudents" + 3 > ["name" == “Ali”];
+	
+	Output:
+	error: Wrong usage of arithmetic operation at line 3
+	Parsing completed with 1 errors

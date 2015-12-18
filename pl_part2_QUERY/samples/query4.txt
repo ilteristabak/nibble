@@ -1,0 +1,1 @@
+graph3 ? [commonName = "name"] <"dim" == 8> ["name" == commonName];

@@ -1,0 +1,3 @@
+query1 = [ "name" == "cs" ] < "dimension" == 3 > [ "color" == "blue"];
+query2 = [ "city" == "ankara" ] <true> ["city" == "izmir"];
+graph1 ? query1 | query2;

@@ -1,0 +1,74 @@
+program:
+	  statement program
+	| statement
+	
+statement:
+	  assignment ENDSTMT
+	| query_execution ENDSTMT
+	 
+assignment:
+	  ID ASSIGN INT
+	| ID ASSIGN query_expr
+	
+query_execution:
+	ID QUESTION query_expr
+	
+query_expr:
+	  query_expr ALTERNATION query_term
+	| query_term
+	
+query_term:
+	  query_term query_factor
+	| query_factor
+	
+query_factor:
+	  query_factor MUL
+	| query_expo
+	
+query_expo:
+      LPARAM query_expr RPARAM
+	| query_unit
+	| ID
+	
+query_unit:
+	  edge_filter
+	| vertex_filter
+	
+edge_filter:
+	  LT predicate GT
+	
+vertex_filter:
+	  LBRACKET predicate RBRACKET
+
+predicate:
+	  BOOL
+	| ID ASSIGN property_name
+	| property_name operator property_value_expr
+	
+property_name:
+	  STRING
+	| ID LPARAM STRING RPARAM
+	
+property_value_expr:
+	  property_value_expr arithmetic property_value_term
+	| property_value_term
+	
+property_value_term:
+	  LPARAM property_value_expr RPARAM
+	| STRING
+	| INT
+	| FLOAT
+	| ID
+	
+arithmetic:
+	  PLUS
+	| MINUS
+	| DIV
+	| MUL
+	
+operator:
+	  EQUAL
+	| LT
+	| GT
+	| LTE
+	| GTE

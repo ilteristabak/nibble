@@ -1,0 +1,2 @@
+//Error! There should be either boolean expression or assignment between [ and ] or < and >
+roads ? <> ["city" == "Ankara"];

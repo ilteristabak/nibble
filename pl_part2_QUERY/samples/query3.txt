@@ -1,0 +1,3 @@
+x = 3;
+y = 4;
+graph3 ?  ["no" > x + y] < "name" == "A" > [ sqrt("client") < y];

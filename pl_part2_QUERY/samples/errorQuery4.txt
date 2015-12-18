@@ -1,0 +1,2 @@
+// Error! You have to specify graph name to query
+?  ["color"== "white"] <true> ["kind" == "rose"];

@@ -1,0 +1,5 @@
+query10 = < "type" == "real" >;
+query11 = < "type" == "virtual" >;
+query12 = query10 (query10 | query11)*; 
+// same with query12 = < "type" == "real" > [true] < "type" == "virtual" >;
+query4 ? query12;
