@@ -25,6 +25,7 @@ GTE >=
 NOT !
 APOST '
 POW \^
+SET Set
 LPARAM \(
 RPARAM \)
 LBRACE \{
@@ -82,6 +83,7 @@ EQUAL ==
 {LT} return LT;
 {GT} return GT;
 {POW} return POW;
+{SET} return SET;
 {LBRACE} return LBRACE;
 {RBRACE} return RBRACE;
 {PLUS} return PLUS;
