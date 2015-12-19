@@ -7,7 +7,7 @@ definition_list:
 definition:
 	undirected_definition
 	| directed_definition 
-	| ID LBRACE ud_graph RBRACE {yyerror("Specify the type of graph: directed or undirected");}
+	| ID LBRACE un_graph RBRACE {yyerror("Specify the type of graph: directed or undirected");}
 
 undirected_definition:
     UNDIRECTEDGRAPH ID LBRACE un_graph RBRACE
@@ -15,7 +15,7 @@ undirected_definition:
 
 directed_definition:
 	DIRECTEDGRAPH ID LBRACE di_graph RBRACE
-	| DIRECTEDGRAPH ID LBRACE d_graph {yyerror("There is an unmatched brace");}
+	| DIRECTEDGRAPH ID LBRACE di_graph {yyerror("There is an unmatched brace");}
 
 un_graph:
 	un_unit_list
