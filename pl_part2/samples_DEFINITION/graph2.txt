@@ -1,0 +1,32 @@
+ungraph Class {
+		vertex x, y, z, k;
+		x  - - y - - z;
+		y  - - k; 
+		x - - k; 
+		z - -k;
+
+		edge1 = x - - y;
+		edge2 = y - - z;
+		edge3 = z - - k;
+
+		vertex x {
+			“name” = “Kemal”;  
+			“surname” = “Buyukkaya”;
+		}
+
+		vertex y {
+			“name” = “Berk”;  
+			“surname” = “Yurttas”;		
+		}
+
+		vertex z {
+			“name” = “Ilteris”;  
+			“surname” = “Tabak”;
+		}
+
+		(x - - y). “relationship” = “project group”;
+		
+		edge edge2 {
+			“relationship” = “project group”;
+		}
+	}

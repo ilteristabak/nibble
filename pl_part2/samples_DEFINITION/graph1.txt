@@ -1,0 +1,23 @@
+digraph courses {
+	vertex a,b,c,d,e;
+
+	a."code" = "CS 101";
+	a."name" = "Algorithms and Programming I";
+
+	b."code" = "CS 102";
+	b."name" = "Algorithms and Programming II";
+
+	c."code" = "CS 201";
+	c."name" = "Fundamental Structures of Computer Science I";
+
+	d."code" = "CS 202";
+	d."name" = "Fundamental Structures of Computer Science II;
+	
+	e."code" = "CS 315";
+	e."name" = "Programming Languages";
+
+	edge1 = a->b;
+	edge2 = b->c;
+	edge3 = b->e;
+	edge4 = c->d;
+}

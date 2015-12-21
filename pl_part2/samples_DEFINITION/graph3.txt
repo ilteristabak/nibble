@@ -1,0 +1,26 @@
+ungraph schools {
+	vertex a {
+		"name" = "Bilkent";
+		"numberOfStudents" = 15000;
+		"city" = "Ankara";
+	}
+
+	vertex b {
+		"name" = "Metu";
+		"numberOfStudents" = 20000;
+		"city" = "Ankara";
+	}
+
+	vertex c;
+	c."name" = "Georgia Institute of Technology";
+	c."numberOfStudents" = 25000;
+	c."city" = "Georgia";
+
+	edge1 = a -- b;
+	edge2 = a -- c;
+	edge3 = b -- c;
+
+	edge1."exchangeStudents" = Set(["Kemal", "Berk"]);
+	edge2."exchangeStudents" = Set(["Ilteris", "Ali"]);
+	edge3."exchangeStudents" = Set(["Suleyman", "John"]); 
+}
