@@ -1,0 +1,7 @@
+One of the most significant difficulty that we have faced was assigning a property
+outside of a graph definition. We could not figured out how we could handle this so
+we decided to remove that part.
+
+Another difficulty was happened at the stage of writing the definition parser. After
+we wrote the parser we were faced with 4 shift/reduce conflict. We could not solve
+the property until asking to our instructor.
