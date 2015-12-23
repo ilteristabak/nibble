@@ -1,4 +1,4 @@
-all: query_parser
+all: query_parser definition_parser
 
 definition_parser: parser_definition.y lexer.l
 	yacc --report=state -d parser_definition.y

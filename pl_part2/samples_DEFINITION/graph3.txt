@@ -23,8 +23,4 @@ ungraph schools {
 	edge1."exchangeStudents" = Set(["Kemal", "Berk"]);
 	edge2."exchangeStudents" = Set(["Ilteris", "Ali"]);
 	edge3."exchangeStudents" = Set(["Suleyman", "John"]); 
-
-	edge edge4 {
-			"relationship" = "project group";
-	}
 }
