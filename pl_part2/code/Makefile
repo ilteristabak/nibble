@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-all: definition_parser
-=======
 all: query_parser definition_parser
->>>>>>> 9f0b88b441db6c8c3f8cba86bfcb643b03267632
 
 definition_parser: parser_definition.y lexer.l
 	yacc --report=state -d parser_definition.y
