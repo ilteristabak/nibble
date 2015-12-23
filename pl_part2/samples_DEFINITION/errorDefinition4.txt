@@ -1,0 +1,29 @@
+// You have to specify the type of definition: edge or vertex
+
+ungraph Class {
+		
+		vertex x, y, z, k;
+
+		edge1 = x -- y;
+		edge2 = y -- z;
+		edge3 = z -- k;
+
+		x {  // type of definition is missing here
+			"name" = "Kemal";  
+			"surname" = "Buyukkaya";
+		}
+
+		vertex y {
+			"name" = "Berk";  
+			"surname" = "Yurttas";		
+		}
+
+		vertex z {
+			"name" = "Ilteris";  
+			"surname" = "Tabak";
+		}
+
+		(x -- y)."relationship" = "project group";
+		(y -- z)."relationship" = "project group";
+		
+}

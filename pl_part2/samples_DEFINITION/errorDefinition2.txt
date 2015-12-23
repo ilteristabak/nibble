@@ -1,0 +1,6 @@
+//There is an unmatched brace
+
+ungraph myGraph {
+	vertex a, b, c;
+	edge1 = a -- b;
+	edge2 = b -- c;

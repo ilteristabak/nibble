@@ -1,0 +1,207 @@
+Outputs of Sample Programs
+----------------------------------------------------------------------------------------------------------
+	graph1.txt
+
+	digraph courses {
+		vertex a,b,c,d,e;
+
+		a."code" = "CS 101";
+		a."name" = "Algorithms and Programming I";
+
+		b."code" = "CS 102";
+		b."name" = "Algorithms and Programming II";
+
+		c."code" = "CS 201";
+		c."name" = "Fundamental Structures of Computer Science I";
+
+		d."code" = "CS 202";
+		d."name" = "Fundamental Structures of Computer Science II";
+
+		e."code" = "CS 315";
+		e."name" = "Programming Languages";
+
+		edge1 = a -> b;
+		edge2 = b -> c;
+		edge3 = b -> e;
+		edge4 = c -> d;
+	}
+
+	Output:
+	Successfully parsed
+----------------------------------------------------------------------------------------------------------
+	
+	graph2.txt
+
+	ungraph Class {
+		
+		vertex x, y, z, k;
+
+		edge1 = x -- y;
+		edge2 = y -- z;
+		edge3 = z -- k;
+
+		vertex x {
+			"name" = "Kemal";  
+			"surname" = "Buyukkaya";
+		}
+
+		vertex y {
+			"name" = "Berk";  
+			"surname" = "Yurttas";		
+		}
+
+		vertex z {
+			"name" = "Ilteris";  
+			"surname" = "Tabak";
+		}
+
+		(x -- y)."relationship" = "project group";
+		(y -- z)."relationship" = "project group";
+			
+	}
+
+	Output:
+	Successfully parsed
+----------------------------------------------------------------------------------------------------------
+	
+	graph3.txt
+
+	ungraph schools {
+		vertex a {
+			"name" = "Bilkent";
+			"numberOfStudents" = 15000;
+			"city" = "Ankara";
+		}
+
+		vertex b {
+			"name" = "Metu";
+			"numberOfStudents" = 20000;
+			"city" = "Ankara";
+		}
+
+		vertex c;
+		c."name" = "Georgia Institute of Technology";
+		c."numberOfStudents" = 25000;
+		c."city" = "Georgia";
+
+		edge1 = a -- b;
+		edge2 = a -- c;
+		edge3 = b -- c;
+
+		edge1."exchangeStudents" = Set(["Kemal", "Berk"]);
+		edge2."exchangeStudents" = Set(["Ilteris", "Ali"]);
+		edge3."exchangeStudents" = Set(["Suleyman", "John"]); 
+	}
+
+	Output:
+	Successfully parsed
+----------------------------------------------------------------------------------------------------------
+	
+	errorDefinition1.txt
+
+	// Specify the type of graph: directed or undirected
+	myGraph {
+		vertex a, b, c;
+		edge1 = a -- b;
+		edge2 = b -- c;
+	}
+
+	Output:
+	error: Specify the type of graph: directed or undirected at line 7
+	Parsing completed with 1 errors
+----------------------------------------------------------------------------------------------------------
+
+	errorDefinition2.txt
+
+	//There is an unmatched brace
+	ungraph myGraph {
+		vertex a, b, c;
+		edge1 = a -- b;
+		edge2 = b -- c;
+
+	Output:
+	error: There is an unmatched brace at line 7
+	Parsing completed with 1 errors
+----------------------------------------------------------------------------------------------------------
+	
+	errorDefinition3.txt
+
+	// expected ';'
+	ungraph myGraph {
+		vertex a, b, c;
+		edge1 = a -- b;
+		edge2 = b -- c // semicolon missing here
+	}
+
+	Output:
+	error: expected ';' at line 7
+	Parsing completed with 1 errors
+----------------------------------------------------------------------------------------------------------
+
+	errorDefinition4.txt
+
+	// You have to specify the type of definition: edge or vertex
+	ungraph Class {
+		
+		vertex x, y, z, k;
+
+		edge1 = x -- y;
+		edge2 = y -- z;
+		edge3 = z -- k;
+
+		x {  // type of definition is missing here
+			"name" = "Kemal";  
+			"surname" = "Buyukkaya";
+		}
+
+		vertex y {
+			"name" = "Berk";  
+			"surname" = "Yurttas";		
+		}
+
+		vertex z {
+			"name" = "Ilteris";  
+			"surname" = "Tabak";
+		}
+
+		(x -- y)."relationship" = "project group";
+		(y -- z)."relationship" = "project group";
+		
+	}
+
+	Output:
+	error: You have to specify the type of definition: edge or vertex at line 14
+	Parsing completed with 1 errors
+----------------------------------------------------------------------------------------------------------
+
+	errorDefinition5.txt
+
+	// Nibble supports property names which are defined
+	// as an string 
+	ungraph schools {
+		vertex a {
+			"name" = "Bilkent";
+			"numberOfStudents" = 15000;
+			"city" = "Ankara";
+		}
+
+		vertex b {
+			name" = "Metu"; 
+			// There is an syntax error here! name property should be an string as "name".
+			"numberOfStudents" = 20000;
+			"city" = "Ankara";
+		}
+
+		vertex c;
+		c."name" = "Georgia Institute of Technology";
+		c."numberOfStudents" = 25000;
+		c."city" = "Georgia";
+
+		edge1 = a -- b;
+		edge2 = a -- c;
+		edge3 = b -- c;
+	}
+
+	Output:
+	error: syntax error at line 12
+	Parsing completed with 1 errors

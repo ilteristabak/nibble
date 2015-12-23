@@ -1,0 +1,7 @@
+// expected ';'
+
+ungraph myGraph {
+	vertex a, b, c;
+	edge1 = a -- b;
+	edge2 = b -- c // semicolon missing here
+}

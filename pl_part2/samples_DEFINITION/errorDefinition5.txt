@@ -1,0 +1,26 @@
+// Nibble supports property names which are defined
+// as an string 
+
+ungraph schools {
+	vertex a {
+		"name" = "Bilkent";
+		"numberOfStudents" = 15000;
+		"city" = "Ankara";
+	}
+
+	vertex b {
+		name" = "Metu"; 
+		// There is an syntax error here! name property should be an string as "name".
+		"numberOfStudents" = 20000;
+		"city" = "Ankara";
+	}
+
+	vertex c;
+	c."name" = "Georgia Institute of Technology";
+	c."numberOfStudents" = 25000;
+	c."city" = "Georgia";
+
+	edge1 = a -- b;
+	edge2 = a -- c;
+	edge3 = b -- c;
+}

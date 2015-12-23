@@ -85,11 +85,6 @@
 %}
 
 %%
-program :
-  definition_list;
-
-definition_list:
-  definition definition_list | ;
 
 definition:
   undirected_definition
@@ -127,7 +122,7 @@ un_unit:
 
 pre_un_unit:
   VERTEX id_list 
-  | edge_definition
+  | edge_definition_un
   | vertex_edge_property_addition_un 
   ;
 
@@ -139,7 +134,7 @@ di_unit:
 
 pre_di_unit:
   VERTEX id_list
-  | edge_definition
+  | edge_definition_di
   | vertex_edge_property_addition_di 
   ;
 
@@ -156,12 +151,17 @@ vertex_edge_property_addition_un:
 vertex_property_assignment:
   ID DOT STRING ASSIGN expr;
 
-edge_definition:
+edge_definition_un:
   EDGE ID LBRACE property_list RBRACE
   | EDGE id_list
   | EDGE ID ASSIGN ID LINE ID
   | ID id_tail
   | ID ASSIGN ID LINE ID
+  ;
+
+edge_definition_di:
+  EDGE ID LBRACE property_list RBRACE
+  | EDGE id_list
   | ID ASSIGN ID arrow ID
   ;
 
