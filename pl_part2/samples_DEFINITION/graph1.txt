@@ -11,13 +11,13 @@ digraph courses {
 	c."name" = "Fundamental Structures of Computer Science I";
 
 	d."code" = "CS 202";
-	d."name" = "Fundamental Structures of Computer Science II;
-	
+	d."name" = "Fundamental Structures of Computer Science II";
+
 	e."code" = "CS 315";
 	e."name" = "Programming Languages";
 
-	edge1 = a->b;
-	edge2 = b->c;
-	edge3 = b->e;
-	edge4 = c->d;
+	edge1 = a -> b;
+	edge2 = b -> c;
+	edge3 = b -> e;
+	edge4 = c -> d;
 }

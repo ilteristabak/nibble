@@ -85,11 +85,6 @@
 %}
 
 %%
-program :
-  definition_list;
-
-definition_list:
-  definition definition_list | ;
 
 definition:
   undirected_definition
