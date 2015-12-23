@@ -144,14 +144,17 @@ pre_di_unit:
   ;
 
 vertex_edge_property_addition_di:
-  ID DOT STRING ASSIGN expr
+  vertex_property_assignment  
   | LPARAM ID arrow ID RPARAM DOT STRING ASSIGN expr 
   ;
 
 vertex_edge_property_addition_un:
-  ID DOT STRING ASSIGN expr
+  vertex_property_assignment
   | LPARAM ID LINE ID RPARAM DOT STRING ASSIGN expr 
   ;
+  
+vertex_property_assignment:
+  ID DOT STRING ASSIGN expr;
 
 edge_definition:
   EDGE ID LBRACE property_list RBRACE
